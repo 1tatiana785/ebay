@@ -1,0 +1,9 @@
+Core/MyActions.class
+Pages/TableWorkPage.class
+Pages/MainPage.class
+Pages/ElectronicsPageDropDown.class
+Core/Listener.class
+Pages/AdvancedPageCheckboxes.class
+Core/Element.class
+Core/Constants.class
+Core/Driver.class

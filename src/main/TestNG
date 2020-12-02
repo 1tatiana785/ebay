@@ -1,0 +1,10 @@
+<suite name="Suite">
+    <!--<listeners>
+        <listener class-name="Core.Listener"/>
+    </listeners>-->
+    <test name="MainPage">
+        <packages>
+            <package name="Tests"/>
+        </packages>
+    </test>
+</suite>
