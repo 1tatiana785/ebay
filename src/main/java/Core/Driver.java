@@ -30,7 +30,7 @@ final public class Driver { // final - нельзя унаследовать. в
             if (Constants.browserName.equalsIgnoreCase("chrome")) {
                 System.setProperty("webdriver.chrome.driver", "/home/tatiana/_Projects/ebay/drivers/chromedriver");
                 ChromeOptions chromeOptions = new ChromeOptions();
-                //chromeOptions.addArguments("--headless");
+              //  chromeOptions.addArguments("--headless");
                 driver = new ChromeDriver(chromeOptions);
 
             } else if (Constants.browserName.equalsIgnoreCase("firefox")) {
@@ -45,13 +45,14 @@ final public class Driver { // final - нельзя унаследовать. в
         }
         return driver;
     }
-/*
+
     public static void quite() {
         System.out.println("Quitting the browser");
         driver.quit();
         driver = null;
     }
 
+    /*
     public static void close() {
         System.out.println("Closing the browser");
         driver.close();

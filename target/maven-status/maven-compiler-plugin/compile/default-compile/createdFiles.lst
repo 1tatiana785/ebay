@@ -1,9 +1,10 @@
 Core/MyActions.class
-Pages/TableWorkPage.class
 Pages/MainPage.class
 Pages/ElectronicsPageDropDown.class
 Core/Listener.class
 Pages/AdvancedPageCheckboxes.class
+Pages/FirstIPhonePage.class
 Core/Element.class
 Core/Constants.class
+Pages/IPhonePage.class
 Core/Driver.class

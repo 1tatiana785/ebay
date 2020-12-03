@@ -12,12 +12,12 @@ public class MainPage {
     private By iPhoneCategory = By.linkText("iPhone");
     private By AdvancedLink = By.linkText("Advanced");
 
+
     public void clickElectronicsLink (){
         MyActions.click(electronicsLink);
     }
 
-
-    public void selectCategory (){
+    public void selectIPhoneCategory (){
         actions.moveToElement(Driver.getDriver().findElement(electronicsLink)).build().perform();
         MyActions.visibility(iPhoneCategory);
         actions.moveToElement(Driver.getDriver().findElement(iPhoneCategory)).click().build().perform();

@@ -48,6 +48,9 @@ final public class MyActions {
         Element.visibilityElLocation(locator);
     }
 
+    public static void visibilityString (String elementLocation, String name) {
+        Element.visibilityElLocation(By.xpath(String.format(elementLocation, name)));
+    }
 
     public static void presenceElLocation (By locator) {
         Element.presenceElLocation(locator);

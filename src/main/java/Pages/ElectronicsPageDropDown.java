@@ -1,5 +1,6 @@
 package Pages;
 
+import Core.Driver;
 import Core.MyActions;
 import org.openqa.selenium.By;
 
@@ -9,6 +10,7 @@ public class ElectronicsPageDropDown {
     private By dropdownField = By.id("gh-cat-box");
     private By getDropdownList = By.xpath("//div[@id='gh-cat-box']");
     String getDropdown = "//div[@id='gh-cat-box']//option[text()='%s']";
+    private By eBayLink = By.id("gh-la");
 
     public void loadPage() {
         MyActions.presenceElLocation(electronicsText);
@@ -20,6 +22,9 @@ public class ElectronicsPageDropDown {
         MyActions.click(dropdownField);
         MyActions.clickString1(getDropdown, name);
         MyActions.visibility(getDropdownList);
+    }
 
+    public void backMainPage() {
+        MyActions.click(eBayLink); // возващаемся на окно mainWindow
     }
 }
