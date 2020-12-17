@@ -9,7 +9,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import java.util.concurrent.TimeUnit;
 
 final public class Driver { // final - нельзя унаследовать. все его методы тоже становятся final - их нельзя переопределить
-
     private static final ThreadLocal<Driver> driverThread = new ThreadLocal<>();
     private static WebDriver driver = null;
 
@@ -22,29 +21,61 @@ final public class Driver { // final - нельзя унаследовать. в
         return driverThread.get();
     }
 
-    private Driver() {    }
+    private Driver() {
+    }
 
     public static WebDriver getDriver() {
         //singleton pattern
-        if (driver == null) {
+      if (driver == null) {
             if (Constants.browserName.equalsIgnoreCase("chrome")) {
                 System.setProperty("webdriver.chrome.driver", "/home/tatiana/_Projects/ebay/drivers/chromedriver");
                 ChromeOptions chromeOptions = new ChromeOptions();
-              //  chromeOptions.addArguments("--headless");
+                //  chromeOptions.addArguments("--headless");
                 driver = new ChromeDriver(chromeOptions);
 
             } else if (Constants.browserName.equalsIgnoreCase("firefox")) {
                 System.setProperty("webdriver.gecko.driver", "/home/tatiana/_Projects/ebay/drivers/geckodriver");
-               driver = new FirefoxDriver(new FirefoxOptions());
+                driver = new FirefoxDriver(new FirefoxOptions());
             }
             driver.manage().deleteAllCookies();
             driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-           // driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+            // driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
             driver.manage().window().maximize();
             driver.get(Constants.url);
         }
         return driver;
+
+
+/*        switch (Constants.browserName) {
+
+            case "Chrome": {
+                System.setProperty("webdriver.chrome.driver", "/home/tatiana/_Projects/ebay/drivers/chromedriver");
+                ChromeOptions chromeOptions = new ChromeOptions();
+                //  chromeOptions.addArguments("--headless");
+                driver = new ChromeDriver(chromeOptions);
+
+                driver.manage().deleteAllCookies();
+                driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+                // driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+                driver.manage().window().maximize();
+                driver.get(Constants.url);
+                return new ChromeDriver();
+            }
+            case "Firefox": {
+                System.setProperty("webdriver.gecko.driver", "/home/tatiana/_Projects/ebay/drivers/geckodriver");
+                driver = new FirefoxDriver(new FirefoxOptions());
+                driver.manage().deleteAllCookies();
+                driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+                // driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+                driver.manage().window().maximize();
+                driver.get(Constants.url);
+                return new FirefoxDriver();
+            }
+
+        }
+        return driver;*/
     }
+
 
     public static void quite() {
         System.out.println("Quitting the browser");
@@ -52,10 +83,9 @@ final public class Driver { // final - нельзя унаследовать. в
         driver = null;
     }
 
-    /*
     public static void close() {
         System.out.println("Closing the browser");
         driver.close();
         driver = null;
-    }*/
+    }
 }

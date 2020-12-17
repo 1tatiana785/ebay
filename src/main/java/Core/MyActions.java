@@ -9,15 +9,22 @@ import java.util.List;
 
 final public class MyActions {
 
-    private MyActions() {    }
+   // private MyActions() {    }
 
     public static void findElement (By element) {
         Driver.getDriver().findElement(element);
     }
 
+    public static void findElementLoc (By elementLocation) {
+        Driver.getDriver().findElement(elementLocation);
+    }
+
     public static List<WebElement> findElements (By elementLocation) {
         List<WebElement> list = Driver.getDriver().findElements(elementLocation);
         return list;
+    }
+    public static void isEnable (By elementLocation) {
+        Driver.getDriver().findElement(elementLocation).isEnabled();
     }
 
     public static void click (By elementLocation) {

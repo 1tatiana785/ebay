@@ -17,7 +17,7 @@ public class Tests {
     //JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
     // jse.executeScript("alert('Hello');");
 
-    @Test(priority = 1, description = "work with checkboxes in page")
+    /*@Test(priority = 1, description = "work with checkboxes in page")
     public void testingCheckboxes() {
         mainPage.selectAdvancedLink();
         advancedPage.verifySizeBuyingCheckbox(); // проверяет длину списка
@@ -27,18 +27,22 @@ public class Tests {
         Assert.assertEquals(advancedPage.verifyCheckbox("4", "1"), true); // проверяет включен ли чекбокс
         advancedPage.deselectedBuyingCheckbox("2");
         Assert.assertEquals(advancedPage.verifyCheckbox("4", "2"), false); // проверяет включен ли чекбокс
+        advancedPage.isEnableCheckbox();
+        advancedPage.isSelectedDropDown();
+        advancedPage.isEnabledField();
         advancedPage.backMainPage();
-    }
+    }*/
 
     @Test(priority = 2, description = "work with dropdowns in page")
-    public void testDropdown () {
+    public void testDropDown () {
         mainPage.clickElectronicsLink();
         electronicsPage.loadPage();
         electronicsPage.selectDropdown(" Art");
+        electronicsPage.clickSmartGlassesLink();
         electronicsPage.backMainPage();
        }
 
-    @Test(priority = 3, description = "work with table in page")
+   /* @Test(priority = 3, description = "work with table in page")
     public void tableTest() {
         mainPage.selectIPhoneCategory();
         iPhonePage.clickFirstEl();
@@ -65,5 +69,5 @@ public class Tests {
         firstIPhonePage.clickAddButton();
         firstIPhonePage.backMainPage();
         iPhonePage.backMainPage();
-    }
+    }*/
 }
