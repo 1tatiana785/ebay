@@ -1,7 +1,7 @@
 package Pages;
 
 import Core.Driver;
-import Core.MyActions;
+import Core.Element;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -20,40 +20,40 @@ public class AdvancedPageCheckboxes {
     private By dropDownSellers = By.id("_saslop");
     private By fieldSellers = By.xpath("//div[@class='c-cont']//input[@class='space-top']");
 
-    public void clickAnyCheckbox(String number, String number1) {MyActions.clickString2(selectedCheckbox, number, number1);
+    public void clickAnyCheckbox(String number, String number1) {
+        Element.clickStringNumber2(selectedCheckbox, number, number1);
     }
+
     public void isEnableCheckbox() {
         WebElement button1 = Driver.getDriver().findElement(CheckboxSpecificSellers);
         WebElement button = Driver.getDriver().findElement(CheckboxSellers);
-        MyActions.click(CheckboxSellers);
-        //System.out.println(button.isEnabled());
-        //System.out.println(button1.isEnabled());
-        if (button1.isEnabled())
-            MyActions.click(CheckboxSpecificSellers);
-        else MyActions.click(CheckboxSellers);
-        MyActions.click(CheckboxSpecificSellers);
+        Element.click(CheckboxSellers);
+        /// System.out.println(button.isDisplayed()); // проверяем виден элемент или нет
+        if (button1.isEnabled())           // проверяем задисеблен элемент или нет
+            Element.click(CheckboxSpecificSellers);
+        else Element.click(CheckboxSellers);
     }
 
     public void isSelectedDropDown() {
         WebElement dropDown = Driver.getDriver().findElement(dropDownSellers);
         WebElement button = Driver.getDriver().findElement(CheckboxSellers);
-        MyActions.click(CheckboxSellers);
-        //System.out.println(button.isEnabled());
-        if (button.isSelected())
-            MyActions.click(dropDownSellers);
-        else MyActions.click(CheckboxSellers);
-        MyActions.click(dropDownSellers);
+        Element.click(CheckboxSellers);
+        if (button.isSelected())                    //проверяем выделен элемент или нет
+            Element.click(dropDownSellers);
+        else Element.click(CheckboxSellers);
+        Element.click(dropDownSellers);
     }
 
     public void isEnabledField() {
         WebElement field = Driver.getDriver().findElement(fieldSellers);
-        //System.out.println(field.isEnabled());
-        if (!field.isEnabled()) { MyActions.click(CheckboxSellers);}
-            MyActions.click(fieldSellers);
+        if (!field.isEnabled()) {
+            Element.click(CheckboxSellers);
+        }
+        Element.click(fieldSellers);
     }
 
     public void verifySizeBuyingCheckbox() {
-        List<WebElement> listCheckbox = MyActions.findElements(allCheckboxBuying);
+        List<WebElement> listCheckbox = Element.findLestElements(allCheckboxBuying);
         if (listCheckbox.size() == 2) System.out.println("It's Ok! Number of checkboxes is " + listCheckbox.size());
         else System.out.println("Fail!");
     }
@@ -64,32 +64,32 @@ public class AdvancedPageCheckboxes {
     }*/
 
     public void selectAllBuyingCheckboxes() {    // выделяет все чекбоксы не работает на этом примере
-        List<WebElement> listSearchCheckbox = MyActions.findElements(allCheckboxBuying);
+        List<WebElement> listSearchCheckbox = Element.findLestElements(allCheckboxBuying);
         for (WebElement checkbox : listSearchCheckbox) {
             checkbox.click();
         }
     }
 
     public void selectBuyingCheckbox(String number) {
-        if (!MyActions.selectString1(checkboxBuying, number)) { // проверяет что чекбокс включен
-            MyActions.clickString1(checkboxBuying, number); // включаем чекбокс усли не включен
+        if (!Element.selectStringNumber(checkboxBuying, number)) { // проверяет что чекбокс включен
+            Element.clickStringNumber(checkboxBuying, number); // включаем чекбокс усли не включен
         }
     }
 
     public void deselectedBuyingCheckbox(String number) {
-        if (MyActions.selectString1(checkboxBuying, number)) {  // проверяет что чекбокс включен
-            MyActions.clickString1(checkboxBuying, number); // включаем чекбокс
+        if (Element.selectStringNumber(checkboxBuying, number)) {  // проверяет что чекбокс включен
+            Element.clickStringNumber(checkboxBuying, number); // включаем чекбокс
         } else System.out.println("!");
     }
 
     public boolean verifyCheckbox(String number, String number1) {
-        if (MyActions.selectString2(selectedCheckbox, number, number1)) {  // проверяет что чекбокс не включен
+        if (Element.selectStringNumber2(selectedCheckbox, number, number1)) {  // проверяет что чекбокс не включен
         } else return false;
         return true;
     }
 
     public void backMainPage() {
-        MyActions.click(eBayLink); // возващаемся на окно mainWindow
+        Element.click(eBayLink); // возващаемся на окно mainWindow
     }
 
         /*public void openElementInNewWindow () { // open element in new window

@@ -1,8 +1,5 @@
-import Core.Driver;
 import Core.Listener;
 import Pages.*;
-import org.openqa.selenium.JavascriptExecutor;
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -17,8 +14,21 @@ public class Tests {
     //JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
     // jse.executeScript("alert('Hello');");
 
+    @Test(priority = 1, description = "work with search field")
+    public void testSearchField() {
+        mainPage.sendKeysText("Text");
+        mainPage.keysEnter();
+        mainPage.keysChordShift("text");
+        mainPage.keysEnter();
+        mainPage.keysChordControl("a");
+        mainPage.keysChordControl("x");
+        mainPage.keysChordControl("v");
+    }
+
+
     /*@Test(priority = 1, description = "work with checkboxes in page")
     public void testingCheckboxes() {
+        mainPage.findElementsSingIn();
         mainPage.selectAdvancedLink();
         advancedPage.verifySizeBuyingCheckbox(); // проверяет длину списка
         advancedPage.selectAllBuyingCheckboxes();
@@ -33,14 +43,14 @@ public class Tests {
         advancedPage.backMainPage();
     }*/
 
-    @Test(priority = 2, description = "work with dropdowns in page")
+    /*@Test(priority = 2, description = "work with dropdowns in page")
     public void testDropDown () {
         mainPage.clickElectronicsLink();
         electronicsPage.loadPage();
         electronicsPage.selectDropdown(" Art");
         electronicsPage.clickSmartGlassesLink();
         electronicsPage.backMainPage();
-       }
+       }*/
 
    /* @Test(priority = 3, description = "work with table in page")
     public void tableTest() {
@@ -71,3 +81,4 @@ public class Tests {
         iPhonePage.backMainPage();
     }*/
 }
+

@@ -1,7 +1,7 @@
 package Pages;
 
 import Core.Driver;
-import Core.MyActions;
+import Core.Element;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -18,35 +18,33 @@ public class FirstIPhonePage {
     private By link = By.xpath("//div[@class='vi-swc-message-wrapper']//a");
     private By link1 = By.xpath("//a[contains(text(),'Seller levels')]");
     private By eBayLink = By.id("gh-la");
-
     // table locations
     private By tableRows = By.xpath("//table[@id='itmSellerDesc']/following-sibling::*//tr");
     private By headingRows = By.xpath("//table[@id='itmSellerDesc']/following-sibling::*//tr[1]");
     private By headingsColumns = By.xpath("//table[@id='itmSellerDesc']/following-sibling::*//tr[1]/td");
     private By tableHeadingColumns = By.xpath("//table[@id='itmSellerDesc']/following-sibling::*//td");
-
     String mainWindow = Driver.getDriver().getWindowHandle();  // запоминаем имя текущего окна
 
     public void clickBuyButton() {
-        MyActions.click(buyButton);
+        Element.click(buyButton);
     }
 
     public void clickLink() {
-        MyActions.click(link);
+        Element.click(link);
     }
 
     public void clickCancelButton() {
         for (String windowHandle : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(windowHandle); // переходим на последнее открытое окно
         }
-        MyActions.click(cancelButton);
+        Element.click(cancelButton);
     }
 
     public void clickLink1() {
         for (String tab : Driver.getDriver().getWindowHandles()) {
             Driver.getDriver().switchTo().window(tab);
         }
-        MyActions.click(link1);
+        Element.click(link1);
     }
 
     public void backPage() {
@@ -54,34 +52,33 @@ public class FirstIPhonePage {
     }
 
     public void backMainPage() {
-        MyActions.click(eBayLink); // возващаемся на окно mainWindow
+        Element.click(eBayLink); // возващаемся на окно mainWindow
     }
 
     public void clickAddButton() {
-        MyActions.click(addButton);
+        Element.click(addButton);
     }
 
-
     public void verifySize() {
-        List<WebElement> rows = MyActions.findElements(tableRows);
+        List<WebElement> rows = Element.findLestElements(tableRows);
         if (rows.size() == 12) System.out.println("It's Ok!");
         else System.out.println("Fail!");
     }
 
     public List<WebElement> getRows() {  //возврвщает все строки без заглавной
-        List<WebElement> rows = MyActions.findElements(tableRows);
+        List<WebElement> rows = Element.findLestElements(tableRows);
         rows.remove(0);
         return rows;
     }
 
-
     public List<WebElement> getHeadings() {  //возврвщает все столбци заглавной строки
-        List<WebElement> headingColumns = MyActions.findElements(headingsColumns);
+        List<WebElement> headingColumns = Element.findLestElements(headingsColumns);
         System.out.println("Columns number is " + headingColumns.size());
         return headingColumns;
     }
+
     public void verifyHeadings() {  //возврвщает все столбци заглавной строки
-        List<WebElement> headingColumns = MyActions.findElements(headingsColumns);
+        List<WebElement> headingColumns = Element.findLestElements(headingsColumns);
         System.out.println("Columns number is " + headingColumns.size());
     }
 

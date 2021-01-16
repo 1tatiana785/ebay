@@ -5,7 +5,7 @@
     <classes>
       <class name="Tests">
         <methods>
-          <include name="testDropDown"/>
+          <include name="test"/>
         </methods>
       </class> <!-- Tests -->
     </classes>
